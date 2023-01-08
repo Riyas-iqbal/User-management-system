@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import '../Profile/Profile.css'
-import './UpdateProfile.css'
+import React,{useState,useEffect} from 'react'
+import { useNavigate ,useParams } from 'react-router-dom'
 
-
-function Profile() {
+function UpdateUser() {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -14,20 +11,18 @@ function Profile() {
     const [error, setError] = useState('')
     const [imageUrl,setImageUrl] = useState('')
     const navigate = useNavigate()
+    const params = useParams()
 
-    function getUser() {
-        const auth = localStorage.getItem('user')
-        return auth
-    }
+
+
 
     useEffect(() => {
         async function getData() {
-            const auth = getUser()
-            console.log(JSON.parse(auth));
-            let result = await fetch(`http://localhost:3001/profile/${JSON.parse(auth)._id}`, {
+            console.log(params);
+            let result = await fetch(`http://localhost:3001/profile/${params.id}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    authorization: JSON.parse(localStorage.getItem('token'))
+                    authorization: JSON.parse(localStorage.getItem('AdminToken'))
                 }
             })
             result.json().then((result) => {
@@ -79,12 +74,11 @@ function Profile() {
             console.log(key[0] + ', ' + key[1]);
         }
 
-        const auth = getUser()
-        fetch(`http://localhost:3001/profile/${JSON.parse(auth)._id}`, {
+        fetch(`http://localhost:3001/profile/${params.id}`, {
             method: 'put',
             body: formData,
             headers: {
-                authorization: `${JSON.parse(localStorage.getItem("token"))}`,
+                authorization: `${JSON.parse(localStorage.getItem("AdminToken"))}`,
             },
         })
             .then((result) => {
@@ -95,7 +89,6 @@ function Profile() {
                 } else {
                     result.json().then((result) => {
                         if (result.success) {
-                            localStorage.setItem('user', JSON.stringify({ name, email, _id: result.id }))
                             alert('Profile successfully Updated')
                         } else {
                             alert('Profile updation Unsuccessfull')
@@ -175,4 +168,5 @@ function Profile() {
     )
 }
 
-export default Profile
+
+export default UpdateUser

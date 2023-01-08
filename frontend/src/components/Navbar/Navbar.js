@@ -5,7 +5,7 @@ import './Navbar.css'
 function Navbar() {
     const auth = localStorage.getItem('user')
     const admin = localStorage.getItem('AdminToken')
-    const navigate = useNavigate()
+    useNavigate()
     const logout = () => {
         localStorage.removeItem('user')
         localStorage.removeItem('token')
@@ -24,8 +24,8 @@ function Navbar() {
                     admin ?
                         <>
                             <li><Link className='nav-link' to={'/admin/home'}>Admin</Link></li>
-                            <li><Link className='nav-link' to={'/admin'}>View Users</Link></li>
-                            <li><Link className='nav-link' to={'/admin/update'}>update Users</Link></li>
+                            <li><Link className='nav-link' to={'/admin/users'}>View Users</Link></li>
+                            <li><Link className='nav-link' to={'/admin/users'}>update Users</Link></li>
                             <li><Link className='nav-link' onClick={adminLogout} to={'/admin'}>Logout </Link></li>
                         </>
                         :

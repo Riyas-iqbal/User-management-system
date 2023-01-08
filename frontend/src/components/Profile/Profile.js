@@ -44,7 +44,7 @@ function Profile() {
     return (
         <div className='profile'>
                 <h1 style={{ textAlign: 'center' }}>View Profile</h1>
-                <img className='profile-photo' src={`http://localhost:3001/${imageUrl}`} alt="" />
+                <img className='profile-photo' src={ imageUrl ? `http://localhost:3001/${imageUrl}` : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} alt="" />
             <div className='profile-box'>
                 <h3>Name : {name}</h3>
                 <h3>Email : {email}</h3>

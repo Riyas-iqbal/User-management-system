@@ -12,6 +12,8 @@ import UpdateProfile from './components/UpdateProfile/UpdateProfile'
 import AdminLogin from './components/Admin/AdminLogin';
 import AdminHome from './components/Admin/AdminHome';
 import { AdminComponent } from './components/Private/AdminPrivate';
+import ViewUsers from './components/Admin/ViewUsers';
+import UpdateUser from './components/Admin/UpdateUser';
 
 function App() {
   return (
@@ -27,12 +29,14 @@ function App() {
           </Route>
           <Route element={<AdminComponent/>}>
             <Route path='/admin/home' element={<AdminHome/>}></Route>
+            <Route path='/admin/users' element={<ViewUsers/>}></Route>
+            <Route path="/admin/update/:id" element={<UpdateUser/>} />
           </Route>
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/notfound' element={<ErrorPage />} />
           <Route path='/admin' element={<AdminLogin/>}></Route>
-          <Route path='/*' element={<ErrorPage/>}/>
+          {/* <Route path='/*' element={<ErrorPage/>}/> */}
         </Routes>
 
         <Footer />

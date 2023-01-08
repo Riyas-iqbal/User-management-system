@@ -7,7 +7,7 @@ function ErrorPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    navigate('/notFound')
+    navigate('/notFound') // eslint-disable-next-line
   }, [])
 
   return (
