@@ -10,6 +10,10 @@ function Login() {
     
     useEffect(() => {
         console.log('login worked');
+        const AdminAuth = localStorage.getItem('AdminToken')
+        if (AdminAuth) {
+            navigate('/admin')
+        }
         const auth = localStorage.getItem('user')
         if(auth){
             console.log('auth worked');

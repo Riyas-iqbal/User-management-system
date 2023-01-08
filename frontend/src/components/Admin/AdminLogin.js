@@ -8,9 +8,14 @@ function AdminLogin() {
     const navigate = useNavigate()
     
     useEffect(() => {
-        const auth = localStorage.getItem('AdminToken')
-        if(auth){
+        const adminAuth = localStorage.getItem('AdminToken')
+        if(adminAuth){
             navigate('/admin/home')
+        }
+
+        const auth = localStorage.getItem('token')
+        if(auth){
+            navigate('/login')
         } // eslint-disable-next-line
     }, [])
     

@@ -9,7 +9,12 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    
     useEffect(() => {
+        const AdminAuth = localStorage.getItem('AdminToken')
+        if (AdminAuth) {
+            navigate('/admin')
+        }
         const auth = localStorage.getItem('user')
         if (auth) {
             navigate('/')

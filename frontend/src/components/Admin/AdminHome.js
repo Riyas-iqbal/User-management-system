@@ -3,15 +3,31 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 function AdminHome() {
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     const auth = localStorage.getItem('AdminToken')
-    //     if(auth){
-    //         navigate('/admin/home')
-    //     }
-    // }, [])
+
+    const logout = () => {
+        localStorage.removeItem('AdminAuth')
+        navigate('/admin')
+    }
 
   return (
-    <div>AdminHome</div>
+    <div className='home'>
+          <div>
+            <div className="options" onClick={()=>navigate('/')}>
+              <h2 className='text'>Home</h2>
+            </div>
+            <div className="options" onClick={()=>navigate('/admin/users')}>
+            <h2 className='text'>View Users</h2>
+            </div>
+          </div>
+          <div>
+            <div className="options" onClick={()=>navigate('/admin/users')}>
+            <h2 className='text'>Delete Users</h2>
+            </div>
+            <div className="options red-hover" onClick={logout}>
+                <h2 className='text'>Log Out</h2>
+            </div>
+          </div>
+        </div>
   )
 }
 

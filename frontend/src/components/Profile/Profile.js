@@ -8,6 +8,7 @@ function Profile() {
     const [email, setEmail] = useState('')
     const [age, setAge] = useState()
     const [address, setAddress] = useState('')
+    const [imageUrl,setImageUrl] = useState('')
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -30,6 +31,7 @@ function Profile() {
                 setEmail(result.email)
                 setAge(result.age)
                 setAddress(result.address)
+                setImageUrl(result?.imageUrl)
             }).catch((e) => {
                 navigate('/notFound')
                 console.log('error', e);
@@ -42,7 +44,7 @@ function Profile() {
     return (
         <div className='profile'>
                 <h1 style={{ textAlign: 'center' }}>View Profile</h1>
-                <img className='profile-photo' src="https://www.pngitem.com/pimgs/m/87-877270_logo-icon-profile-png-transparent-png.png" alt="" />
+                <img className='profile-photo' src={`http://localhost:3001/${imageUrl}`} alt="" />
             <div className='profile-box'>
                 <h3>Name : {name}</h3>
                 <h3>Email : {email}</h3>

@@ -8,8 +8,6 @@ const jwtkey = process.env.JWT_KEY
 const adminPassword = process.env.ADMIN_PASSWORD
 
 
-
-
 router.post('/',(req,res)=>{
     const {email,password} = req.body
     if( email === 'a' && password === adminPassword){
@@ -28,7 +26,7 @@ router.post('/',(req,res)=>{
 })
 
 
-router.get('/admin/profiles', (req, res) => {
+router.get('/users', (req, res) => {
     User.find({}, 'name email')
         .then(response => {
             if (response.length != 0) {

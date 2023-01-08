@@ -21,6 +21,7 @@ app.listen(port,()=>console.log(chalk.magenta(`\nServer started on port :`),chal
 app.use(express.json())
 app.use(cors())
 app.use('/uploads',express.static('uploads'))
+app.use('/admin',adminRouter)
 
 const jwtkey = 'user-management'
 
@@ -121,7 +122,6 @@ app.get('/profile/:id',(req,res)=>{
     })
 })
 
-
 app.put('/profile/:id',upload.single('image'), (req, res) => {
     console.log(req.params.id)
     console.log(req.file,req.body)
@@ -149,7 +149,6 @@ app.put('/profile/:id',upload.single('image'), (req, res) => {
     
     
     
-    app.use('/admin',adminRouter)
     
     
     

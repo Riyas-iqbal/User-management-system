@@ -23,9 +23,9 @@ function Navbar() {
 
                     admin ?
                         <>
-                            <li><Link className='nav-link' to={'/admin/home'}>admin</Link></li>
-                            <li><Link className='nav-link' to={'/admin'}>admin profile</Link></li>
-                            <li><Link className='nav-link' to={'/admin/update'}>helo</Link></li>
+                            <li><Link className='nav-link' to={'/admin/home'}>Admin</Link></li>
+                            <li><Link className='nav-link' to={'/admin'}>View Users</Link></li>
+                            <li><Link className='nav-link' to={'/admin/update'}>update Users</Link></li>
                             <li><Link className='nav-link' onClick={adminLogout} to={'/admin'}>Logout </Link></li>
                         </>
                         :

@@ -1,0 +1,35 @@
+.error-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vw;
+    font-size: larger;
+    font-weight: 900;
+    background-position: center;
+    background-size: contain;
+    background-repeat: space;
+}
+
+.errorText{
+    position: absolute;
+    top: 90px;
+    text-align: center;
+}
+
+.errorLinkDiv{
+    position: absolute;
+    bottom: 90px;
+}
+
+
+.errorLink{
+    text-decoration: none;
+    padding: 14px;
+    background: lightblue;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+.errorLink:hover{
+    color: lightblue;
+    background: blue;
+}
