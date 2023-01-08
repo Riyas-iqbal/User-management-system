@@ -1,0 +1,35 @@
+.home{
+    background: #dbe9fa;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options{
+    background-color:  #a1aebe;
+    padding: 100px;
+    border-radius: 5%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.2s;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    
+}
+
+.options:hover{
+    background-color:  #a9c3e3;
+    transform: scale(1.02);
+}
+
+.red-hover{
+    background-color:  #e79d9d;
+}
+
+.red-hover:hover {
+    background-color: rgb(255, 71, 71);
+}

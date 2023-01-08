@@ -1,0 +1,48 @@
+.profile {
+    background: #eaf3fe;
+    height: 91vh;
+    display: flex;
+    flex-flow: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+
+.profile-photo {
+    width: 200px;
+    padding: 0px 50px 0px 50px;
+    border-radius: 50%;
+}
+
+.profile-box {
+    /* margin-top: 20px; */
+    font-size: 20px;
+    background: #d9e8f9;
+    padding: 50px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.profile-box:hover {
+    background: #d8e9fd;
+    transform: scale(1.001);
+}
+
+.update-btn {
+    width: 150px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #9fccff;
+    border: solid 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.update-btn:hover {
+    transform: scale(1.03);
+    color: white;
+    /* color: #daebff; */
+    background-color:  dodgerblue;
+}

@@ -1,0 +1,33 @@
+.navbar{
+    background-color: #a9c3e3;
+    margin: 0;
+    padding: 5px;
+}
+
+.navbar li{
+    display: inline-block;
+    padding: 10px;
+}
+
+.nav-link{
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 5px;
+    transition: 0.2s;
+}
+
+.nav-link:hover{
+    color: rgb(63, 62, 62);
+}
+
+.nav-right{
+    text-align: right;
+    margin-right: 70px;
+}
+
+.logo{
+    width: 45px;
+    border-radius:50% ;
+}
+
