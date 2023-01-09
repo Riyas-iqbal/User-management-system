@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Profile/Profile.css'
 import './UpdateProfile.css'
+import { useDispatch } from "react-redux";
+import { updateUsername } from '../../redux/user';
 
 
 function Profile() {
@@ -14,6 +16,7 @@ function Profile() {
     const [error, setError] = useState('')
     const [imageUrl,setImageUrl] = useState('')
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
     function getUser() {
         const auth = localStorage.getItem('user')
@@ -96,6 +99,7 @@ function Profile() {
                     result.json().then((result) => {
                         if (result.success) {
                             localStorage.setItem('user', JSON.stringify({ name, email, _id: result.id }))
+                            dispatch(updateUsername(result.name));
                             alert('Profile successfully Updated')
                         } else {
                             alert('Profile updation Unsuccessfull')
