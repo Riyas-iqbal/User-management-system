@@ -36,7 +36,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/notfound' element={<ErrorPage />} />
           <Route path='/admin' element={<AdminLogin/>}></Route>
-          {/* <Route path='/*' element={<ErrorPage/>}/> */}
+          <Route path='/*' element={<ErrorPage/>}/>
         </Routes>
 
         <Footer />
