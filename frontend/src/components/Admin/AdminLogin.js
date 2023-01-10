@@ -26,26 +26,30 @@ function AdminLogin() {
             setError('please enter your email and password')
             return false
         }
-        let result = await fetch('http://localhost:3001/admin',{
+        fetch('http://localhost:3001/admin',{
             method:'post',
             body: JSON.stringify({email,password}),
             headers:{
                 'Content-Type':'application/json'
             }
         })
-        result.json().then((result)=>{
-            console.log(result)
-            if (result.error) {
-                setError(result.error)
-                return false
-            } 
-            if (result.adminAuth) {
-                localStorage.setItem('AdminToken',JSON.stringify(result.adminAuth))
-                navigate('/admin/home')
-            }
-        }).catch((e)=>{
-            console.log('error',e);
-        })
+            .then(result=>{
+                result.json().then((result)=>{
+                    console.log(result)
+                    if (result.error) {
+                        setError(result.error)
+                        return false
+                    } 
+                    if (result.adminAuth) {
+                        localStorage.setItem('AdminToken',JSON.stringify(result.adminAuth))
+                        navigate('/admin/home')
+                    }
+                }).catch((e)=>{
+                    console.log('error',e);
+                })
+            })
+            .catch(e=>navigate('/notFound'))
+        
     }
 
     return (

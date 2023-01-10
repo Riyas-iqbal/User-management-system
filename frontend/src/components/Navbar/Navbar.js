@@ -44,7 +44,7 @@ function Navbar() {
               console.log(e);
             }
           })();
-        }
+        }           // eslint-disable-next-line
       }, [auth]);
     
     
