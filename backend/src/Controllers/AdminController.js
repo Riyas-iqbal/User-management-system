@@ -1,35 +1,31 @@
 const chalk = require('chalk')
-const express = require('express')
-const router = express.Router()
 const Jwt = require('jsonwebtoken')
-
-const User = require('./db/User');
-
-
 const jwtkey = process.env.JWT_KEY
 const adminPassword = process.env.ADMIN_PASSWORD
 
+const User = require('../Models/UserSchema');
 
-router.post('/', (req, res) => {
+exports.AdminLogin = (req, res) => {
     const { email, password } = req.body
-    if (email === 'a' && password === adminPassword) {
-        Jwt.sign({ email, password }, jwtkey, { expiresIn: "24h" }, (err, token) => {
-            if (err) {
-                console.log(err)
-                res.send({ error: 'Something went wrong, please try again later' })
-            }
-            console.log(chalk.green('admin login success'), '\n', token);
-            res.send({ adminAuth: token })
-        })
+    if (email === 'admin@gmail.com' && password === adminPassword) {
+        Jwt
+            .sign({ email, password }, jwtkey, { expiresIn: "24h" }, (err, token) => {
+                if (err) {
+                    console.log(err)
+                    res.send({ error: 'Something went wrong, please try again later' })
+                }
+                console.log(chalk.green('admin login success'), '\n', token);
+                res.send({ adminAuth: token })
+            })
     } else {
         console.log('error');
         res.send({ error: 'invalid email or password' })
     }
-})
+}
 
-
-router.get('/users', (req, res) => {
-    User.find({}, 'name email')
+exports.getAllUsers = (req, res) => {
+    User
+        .find({}, 'name email')
         .then(response => {
             if (response.length != 0) {
                 console.log(chalk.green("Get All User Profiles : Profiles Found\n"))
@@ -43,41 +39,34 @@ router.get('/users', (req, res) => {
             console.log(chalk.red('Get All User Profiles : Error\n'), e)
             res.status(404).send({ error: 'server error' })
         })
-})
+}
 
-router.get("/search/:key", async (req, res) => {
+
+exports.searchUser = async (req, res) => {
+    console.log(req.params)
     let result = await User.find({
         $or: [
             { name: { $regex: req.params.key, $options: "i" } },
             { email: { $regex: req.params.key, $options: "i" } },
         ],
-    });
+    })
     res.send(result);
-});
+}
 
-
-router.delete('/user/:id',(req,res)=>{
-    User.deleteOne({ _id :req.params.id })
-        .then((result)=>{
+exports.deleteUser = (req, res) => {
+    User.deleteOne({ _id: req.params.id })
+        .then((result) => {
             if (result.deletedCount > 0) {
                 console.log('user deleted')
-                res.send({'result':'user deleted'})
+                res.send({ 'result': 'user deleted' })
             } else {
                 console.log('user not found')
-                res.send({'error':'user not found'})
+                res.send({ 'error': 'user not found' })
             }
-            console.log('result:',result)
+            console.log('result:', result)
         })
-        .catch((error)=>{
+        .catch((error) => {
             console.log(error)
-            res.send({'error':error.message})
+            res.send({ 'error': error.message })
         })
-})
-
-router.delete('/user',(req,res)=>{
-    res.send({'error':'please provide user id'})
-})
-
-
-
-module.exports = router;
+}
