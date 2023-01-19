@@ -1,3 +1,5 @@
+const jwtkey = process.env.JWT_KEY
+const Jwt = require('jsonwebtoken')
 
 
 exports.verifyToken = (req, res, next) => {
